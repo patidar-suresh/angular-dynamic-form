@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
-import { FormField } from 'src/app/models/form-models';
-import { DynamicFormBuilderService } from 'src/app/services/dynamic-form-builder.service';
+import { FormField } from '../../models/form-models';
+import { DynamicFormBuilderService } from '../../services/dynamic-form-builder.service';
 
 @Component({
   selector: 'app-form-group-array-control',

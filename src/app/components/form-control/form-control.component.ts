@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
-import { FormField, FormFieldOption } from 'src/app/models/form-models';
+import { FormField, FormFieldOption } from '../../models/form-models';
 
 @Component({
   selector: 'app-form-control',
