@@ -1,0 +1,20 @@
+<mat-tab-group (selectedTabChange)="onTabChange($event)">
+  <mat-tab label="Form">
+    <form [formGroup]="formGroup">
+    <div class="form-container container">
+      <div class="row">
+          <div *ngFor="let formField of schema"
+            [class]="formField.columnSize && formField.columnSize <= 12 ? 'col-md-' + formField.columnSize : 'col-md-12'">
+            <app-form-control [form]="formGroup" [field]="formField"></app-form-control>
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-tab>
+  <mat-tab label="Schema">
+    <pre>{{ schema | json }}</pre>
+  </mat-tab>
+  <mat-tab label="Data">
+    <pre>{{ data | json }}</pre>
+  </mat-tab>
+</mat-tab-group>

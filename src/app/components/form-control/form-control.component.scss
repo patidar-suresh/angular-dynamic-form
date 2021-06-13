@@ -1,0 +1,13 @@
+:host, mat-form-field, mat-slider {
+  width: 100%;
+}
+
+.input-form-section {
+  mat-radio-button, mat-checkbox{
+    padding: 0 10px;
+  }
+  mat-label {
+    display: block;
+    padding-bottom: 6px;
+  }
+}

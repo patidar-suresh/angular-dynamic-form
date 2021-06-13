@@ -1,0 +1,19 @@
+<section [formGroup]="form"  >
+  <div class="row" [formArrayName]="field.name"  *ngFor="let fg of formGroupArrayControls.controls; let i=index">
+    <div *ngFor="let item of field.fieldArray;"
+        [class]="item.columnSize && item.columnSize <= 11 ? 'col-md-'+item.columnSize : 'col-md-11'">
+      <app-form-control [field]="item"  [form]="getFormGroup(i)"></app-form-control>
+  </div>
+    <div class="col-md-1">
+      <button (click)="addNewFormGroup()" *ngIf="i === formGroupArrayControls.controls.length - 1" mat-icon-button color="primary">
+        <mat-icon>add</mat-icon>
+      </button>
+      <button (click)="deleteFormGroup(i)" *ngIf="i !== formGroupArrayControls.controls.length - 1" mat-icon-button color="warn">
+        <mat-icon>remove</mat-icon>
+      </button>
+    </div>
+
+  </div>
+
+</section>
+

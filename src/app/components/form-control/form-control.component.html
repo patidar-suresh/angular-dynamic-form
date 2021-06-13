@@ -1,0 +1,66 @@
+<ng-container [formGroup]="form" *ngIf="field">
+  <!-- Form fields supported input like text box, dropdown, chiplist, text area etc -->
+  <mat-form-field *ngIf="supportedFormFieldTypes.includes(field.fieldType)" appearance="standard">
+    <mat-label>{{field.label}}</mat-label>
+    <ng-container [ngSwitch]="field.fieldType">
+      <input *ngSwitchCase="'textbox'" matInput [formControlName]="field.name"
+        [type]="field.fieldSubType ? field.fieldSubType : 'text'"
+        [placeholder]="field.placeHolder? field.placeHolder : ''">
+
+      <textarea *ngSwitchCase="'textarea'" matInput [formControlName]="field.name"
+        [placeholder]="field.placeHolder? field.placeHolder : ''"></textarea>
+
+      <mat-select *ngSwitchCase="'dropdown'" [formControlName]="field.name">
+        <mat-option *ngFor="let option of field.options" [value]="option.value">{{option.label ? option.label :
+          option.value}}</mat-option>
+      </mat-select>
+
+      <mat-chip-list #chipList *ngSwitchCase="'chiplist'" [formArrayName]="field.name">
+
+        <mat-chip *ngFor="let tag of tagControls.value" selectable="false" removable="true" (removed)="removeTag(tag)">
+          {{tag}}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <input [placeholder]="field.placeHolder? field.placeHolder :''" [matChipInputFor]="chipList"
+          matChipInputAddOnBlur="true" (matChipInputTokenEnd)="addTag($event)">
+      </mat-chip-list>
+
+    </ng-container>
+    <mat-hint *ngIf="field.hint">{{field.hint}}</mat-hint>
+  </mat-form-field>
+
+  <!-- Non Form Field inputs -->
+  <ng-container [ngSwitch]="field.fieldType">
+    <section *ngSwitchCase="'radiogroup'" class="input-form-section">
+      <mat-label>{{field.label}}</mat-label>
+      <mat-radio-group [formControlName]="field.name">
+        <mat-radio-button *ngFor="let option of field.options" [value]="option.value">
+          {{option.label ? option.label : option.value}}
+        </mat-radio-button>
+      </mat-radio-group>
+    </section>
+
+    <section *ngSwitchCase="'checkboxgroup'" class="input-form-section">
+      <mat-label>{{field.label}}</mat-label>
+      <mat-checkbox *ngFor="let option of field.options" [value]="option.value" [checked]="isChecked(option)"
+        (change)="onCheckChange($event)">
+        {{option.label ? option.label : option.value}}
+      </mat-checkbox>
+    </section>
+
+
+    <section *ngSwitchCase="'slider'" class="input-form-section">
+      <mat-label>{{field.label}}</mat-label>
+      <mat-slider [formControlName]="field.name" [max]="field.max ? field.max : 100" [min]="field.min ? field.min : 0"
+        [step]="field.step ? field.step : 1" thumbLabel="true">
+      </mat-slider>
+    </section>
+
+    <section *ngSwitchCase="'formgrouparray'" class="input-form-section">
+      <mat-label>{{field.label}}</mat-label>
+      <app-form-group-array-control [form]="form" [field]="field"></app-form-group-array-control>
+    </section>
+
+  </ng-container>
+
+</ng-container>
