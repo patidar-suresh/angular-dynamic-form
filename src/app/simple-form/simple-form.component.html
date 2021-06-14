@@ -1,8 +1,16 @@
+<mat-form-field appearance="fill">
+  <mat-label>Select a Form</mat-label>
+  <mat-select value="product"  (selectionChange)="onFormChange($event)">
+    <mat-option value="product">Simple Product</mat-option>
+    <mat-option value="employee">Employee Registration</mat-option>
+    <mat-option value="assessment">Skill Assesment Form</mat-option>
+  </mat-select>
+</mat-form-field>
 <mat-tab-group (selectedTabChange)="onTabChange($event)">
   <mat-tab label="Form">
     <form [formGroup]="formGroup">
     <div class="form-container container">
-      <div class="row">
+      <div class="row" *ngIf="schema">
           <div *ngFor="let formField of schema"
             [class]="formField.columnSize && formField.columnSize <= 12 ? 'col-md-' + formField.columnSize : 'col-md-12'">
             <app-form-control [form]="formGroup" [field]="formField"></app-form-control>
