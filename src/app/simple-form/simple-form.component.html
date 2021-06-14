@@ -6,7 +6,7 @@
     <mat-option value="assessment">Skill Assesment Form</mat-option>
   </mat-select>
 </mat-form-field>
-<mat-tab-group (selectedTabChange)="onTabChange($event)">
+<mat-tab-group (selectedTabChange)="onTabChange($event)" [(selectedIndex)]="selectedTabIndex">
   <mat-tab label="Form">
     <form [formGroup]="formGroup">
     <div class="form-container container">

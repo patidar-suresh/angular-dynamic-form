@@ -16,7 +16,7 @@ export class SimpleFormComponent implements OnInit {
   data: any = {}
   schema: FormField[] = sample.schemas['product'];
 
-
+  selectedTabIndex = 0;
   formGroup: FormGroup;
 
   constructor(private fb: DynamicFormBuilderService) {
@@ -44,6 +44,7 @@ export class SimpleFormComponent implements OnInit {
         this.schema = sample.schemas.product;
     }
     this.formGroup = this.fb.toFormGroup(this.schema);
+    this.selectedTabIndex = 0;
   }
 
   ngOnInit(): void {
