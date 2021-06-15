@@ -1,11 +1,13 @@
 <mat-form-field appearance="fill">
   <mat-label>Select a Form</mat-label>
-  <mat-select value="product"  (selectionChange)="onFormChange($event)">
+  <mat-select (selectionChange)="onFormChange($event)" [(value)]="selectedForm">
     <mat-option value="product">Simple Product</mat-option>
     <mat-option value="employee">Employee Registration</mat-option>
     <mat-option value="assessment">Skill Assesment Form</mat-option>
   </mat-select>
 </mat-form-field>
+<button mat-stroked-button color="primary" class="load-form-button" (click)="loadSampleData()">Load Sample Data in From</button>
+<button mat-stroked-button color="primary" class="load-form-button" (click)="resetFormData()">Reset Form</button>
 <mat-tab-group (selectedTabChange)="onTabChange($event)" [(selectedIndex)]="selectedTabIndex">
   <mat-tab label="Form">
     <form [formGroup]="formGroup">

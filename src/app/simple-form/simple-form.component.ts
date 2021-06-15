@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { MatSelectChange } from '@angular/material/select';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { FormField } from '../models/form-models';
@@ -14,6 +14,7 @@ import sample from './sample-schemas';
 export class SimpleFormComponent implements OnInit {
 
   data: any = {}
+  selectedForm = 'product'
   schema: FormField[] = sample.schemas['product'];
 
   selectedTabIndex = 0;
@@ -27,6 +28,32 @@ export class SimpleFormComponent implements OnInit {
     if (event.index === 2) {
       this.data = this.formGroup.value;
     }
+  }
+
+  resetFormData() {
+    this.fb.clearForm(this.formGroup, this.schema);
+  }
+
+  loadSampleData() {
+    this.fb.clearForm(this.formGroup, this.schema);
+    switch (this.selectedForm) {
+      case 'product':
+        this.fb.generageFormArrayForPatch(this.formGroup, this.schema, sample.data['product']);
+        this.formGroup.patchValue(sample.data['product']);
+        break;
+      case 'employee':
+        this.fb.generageFormArrayForPatch(this.formGroup, this.schema, sample.data['employee']);
+        this.formGroup.patchValue(sample.data['employee']);
+        break;
+      case 'assessment':
+        this.fb.generageFormArrayForPatch(this.formGroup, this.schema, sample.data['assessment']);
+        this.formGroup.patchValue(sample.data['assessment']);
+        break;
+      default:
+        this.fb.generageFormArrayForPatch(this.formGroup, this.schema, sample.data['product']);
+        this.formGroup.patchValue(sample.data['product']);
+    }
+    this.selectedTabIndex = 0;
   }
 
   onFormChange(event: MatSelectChange) {

@@ -23,41 +23,39 @@ export class FormControlComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  get tagControls(): FormArray {
+  get arrayControls(): FormArray {
     return this.form.controls[this.field.name] as FormArray;
   }
 
   isChecked(option: FormFieldOption): boolean {
-    return this.form.controls[this.field.name].value.indexOf(option.value) >= 0;
+    return this.arrayControls.value.indexOf(option.value) >= 0;
   }
 
   addTag(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
-    if (value && this.tagControls.value.indexOf(value) < 0) {
-      this.tagControls.push(new FormControl(value));
+    if (value && this.arrayControls.value.indexOf(value) < 0) {
+      this.arrayControls.push(new FormControl(value));
     }
     event.chipInput!.clear();
   }
 
   removeTag(tag: string): void {
-    const index = this.tagControls.value.indexOf(tag);
+    const index = this.arrayControls.value.indexOf(tag);
     if (index >= 0) {
-      this.tagControls.removeAt(index);
+      this.arrayControls.removeAt(index);
     }
   }
 
   onCheckChange(event: any) {
-    const formArray: FormArray = this.form.get(this.field.name) as FormArray;
-
     if(event.checked){
-      if (this.tagControls.value.indexOf(event.source.value) < 0) {
-        formArray.push(new FormControl(event.source.value));
+      if (this.arrayControls.value.indexOf(event.source.value) < 0) {
+        this.arrayControls.push(new FormControl(event.source.value));
       }
     }
     else {
-      const index = this.tagControls.value.indexOf(event.source.value);
+      const index = this.arrayControls.value.indexOf(event.source.value);
       if (index >= 0) {
-        this.tagControls.removeAt(index);
+        this.arrayControls.removeAt(index);
       }
     }
   }

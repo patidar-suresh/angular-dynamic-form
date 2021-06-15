@@ -17,7 +17,7 @@
 
       <mat-chip-list #chipList *ngSwitchCase="'chiplist'" [formArrayName]="field.name">
 
-        <mat-chip *ngFor="let tag of tagControls.value" selectable="false" removable="true" (removed)="removeTag(tag)">
+        <mat-chip *ngFor="let tag of arrayControls.value" selectable="false" removable="true" (removed)="removeTag(tag)">
           {{tag}}
           <mat-icon matChipRemove>cancel</mat-icon>
         </mat-chip>

@@ -397,5 +397,99 @@ export default {
         ]
       }
     ]
+  },
+  data: {
+    product: {
+      "productname": "MacBook Pro 13″",
+      "mfgData": "2021-03-25",
+      "price": "122900",
+      "color": "#e3dede",
+      "quantity": "10",
+      "description": "Apple-designed M1 chip for a giant leap in CPU, GPU, and machine learning performance\nGet more done with up to 20 hours of battery life, the longest ever in a Mac"
+    },
+    employee: {
+      "firstName": "Rack",
+      "middleName": "M",
+      "lastName": "Jackon",
+      "email": "rack.jackon@dynaform.com",
+      "mobile": "+919956999569",
+      "dob": "1980-06-25",
+      "portfolioWebsite": "http://imrackjackon.com",
+      "gender": "m",
+      "hobbies": [
+        "Music",
+        "Travelling"
+      ],
+      "relocation": "yes",
+      "city": "mumbai",
+      "State": "mh",
+      "comment": "The role is very appealing to me, and I believe that my strong technical experience and education make me a highly competitive candidate for this position.",
+      "keySkills": [
+        "Java",
+        "Angular",
+        "Maven",
+        "Git",
+        "NodeJS",
+        "HTML5",
+        "CSS3",
+        "Spring MVC",
+        "Oracle",
+        "MySQL",
+        "Docker"
+      ],
+      "Confidence": 8
+    },
+    assessment: {
+      "name": "John Donaldson",
+      "date": "2021-01-18",
+      "mobile": "+918676826375",
+      "email": "john.donaldson@gmail.com",
+      "address": "8 Sue Circle\nSmithtown, CA 08067",
+      "skills": [
+        {
+          "skillName": [
+            "Java",
+            "Angular",
+            "JavaScript",
+            "HTML5",
+            "CSS3",
+            "VueJS",
+            "ReactJS",
+            "NodeJS",
+            "Spring MVC"
+          ],
+          "category": "technology",
+          "proficiency": 7,
+          "current_working": "y"
+        },
+        {
+          "skillName": [
+            "Leadership",
+            "Team Player"
+          ],
+          "category": "communication",
+          "proficiency": 4,
+          "current_working": "y"
+        },
+        {
+          "skillName": [
+            "Tally",
+            "MS Money"
+          ],
+          "category": "finance",
+          "proficiency": 6,
+          "current_working": "n"
+        },
+        {
+          "skillName": [
+            "Digital Marketing",
+            "Social Media Marketing"
+          ],
+          "category": "programming",
+          "proficiency": 2,
+          "current_working": "n"
+        }
+      ]
+    }
   }
 }
